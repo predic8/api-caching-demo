@@ -1,0 +1,1 @@
+INSERT INTO artikel (id, name, preis, version) VALUES (7, 'Dauerlutscher',0.99, 1);

@@ -1,0 +1,55 @@
+# T:
+# - Anfrage geht nicht über den Cache
+
+GET http://localhost:8080/artikel/7
+
+# =>
+#   ETag: "artikel-id7-v1"
+#   Zeigen: Konsolenausgabe App
+
+###
+
+# T:
+#  - Habe lokale Kopie
+#  - Möchte wissen ob aktuell
+# 1. Nochmal
+
+GET http://localhost:8080/artikel/7
+If-None-Match: "artikel-id7-v1"
+
+# => 304
+#  Netzwerk Trafik entsteht
+#  Server muss prüfen was aktuell ist
+#  Server antwortet, aber kann Antwort ohne Body senden
+#  - Kleines Beispiel = uninteressant
+
+###
+
+PUT http://localhost:8080/artikel/7
+Content-Type: application/json
+
+{
+  "name": "Dauerlutscher XL",
+  "preis": 1.50
+}
+
+
+# =>
+#   ETag: "artikel-id7-v2"
+
+###
+
+GET http://localhost:8080/artikel/7
+If-None-Match: "artikel-id7-v1"
+
+# =>
+#   ETag: "artikel-id7-v2"
+#
+# T:
+#  - Antwort speichert sich der Client lokal
+
+###
+
+GET http://localhost:8080/artikel/7
+If-None-Match: "artikel-id7-v2"
+

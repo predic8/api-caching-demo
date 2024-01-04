@@ -1,0 +1,30 @@
+GET http://localhost:8080/artikel/7
+
+# ETag & Preis ansehen
+
+### Nochmal
+
+PUT http://localhost:8080/artikel/7
+Content-Type: application/json
+If-Match: "artikel-id7-v1"
+
+{
+  "name": "Dauerlutscher XL",
+  "preis": 1.50
+}
+
+###
+
+GET http://localhost:8080/artikel/7
+
+###
+PUT http://localhost:8080/artikel/7
+Content-Type: application/json
+If-Match: "artikel-id7-v1"
+
+{
+  "name": "Dauerlutscher",
+  "preis": 2.90
+}
+
+# => 412 Precondition Failed

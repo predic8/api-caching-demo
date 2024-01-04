@@ -1,0 +1,63 @@
+# Vorbereitung
+#
+# 1. Take out cache-contol(max-age) in maxage/FaktorenAPI
+# 2. Start App
+
+
+GET /faktoren/63412341234424
+Host: localhost
+
+# 1. abschicken
+#   => Ergebnis nach 3 Sekunden
+#   Zeit zeigen
+#   X-Cache: MISS from squid-proxy
+# 2. nochmal
+#   => ditto
+# 3. CacheControl Header einbauen
+#    FaktorenAPI:
+#     ok().cacheControl(CacheControl.maxAge(20, TimeUnit.SECONDS)).body(zerlege(n));
+#    T: - Wir können für jede Response angeben, wie lange diese Frisch bleibt, so ne Art
+#         Haltbarkeitsdatum für Caches
+# 4. App Neustart
+# 5. nochmal
+#    => 3s, Nr
+# 6. nochmal
+#    => X ms
+#    Zeit zeigen, Nr
+#    X-Cache: HIT from squid-proxy
+# 7. Warten
+# 8. => 3s
+# 9. App Stoppen
+#
+
+###  II. Verfügbarkeit
+
+# 10. Nochmal
+#     => Antwort aus Cache => Verfügbarkeit
+#
+
+# 1. Add stale-if-error=3600
+#    .header(CACHE_CONTROL,"max-age=30,stale-if-error=3600")
+
+#  III. Stale Cache
+#  1. abrufen
+#  2. Neustart
+#  3. Abrufen
+
+### Cache Invalidierung
+
+GET /faktoren/63412341234424
+Host: localhost
+Cache-Control: no-cache
+
+# Antwort kommt nicht aus dem Cache, wird aber in den Cache gelegt, falls abgerufen
+# Ideal zum Invalidieren, d.h. Cache Eintrag neu Laden
+# - Nach PUT abschicken
+
+###
+
+GET /faktoren/63412341234424
+Host: localhost
+Cache-Control: no-store
+
+# Liest vom Cache, legt nie was im Cache ab
