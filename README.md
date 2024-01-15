@@ -1,9 +1,9 @@
 
-# Proxy Cache Demo 
+# API Caching Demo 
 
-Projekt zum Video:
+Projekt zum Video: https://youtu.be/7BgkR98-anA?si=yPuSaBrcZuLh9-XN
 
-https://youtu.be/7BgkR98-anA?si=yPuSaBrcZuLh9-XN
+## Demo Ausführen
 
 1. Starte proxy server:
 
