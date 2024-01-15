@@ -1,7 +1,7 @@
 
-# Proxy Cache Demo max-age
+# Proxy Cache Demo 
 
-Starte proxy server:
+1. Starte proxy server:
 
 ```bash
 ./run-squid.sh
@@ -19,7 +19,9 @@ oder:
 ./run-varnish.sh
 ```
 
-Führe die Anfragen in `requests/max-age.http` aus.
+2. Führe die App-Klasse aus, um die Spring Boot Anwendung zu starten.
+
+3. Führe die Anfragen in `requests/max-age.http` aus.
 
 # Client Cache Demo ETag
 
