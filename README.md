@@ -3,7 +3,7 @@
 
 Projekt zum Video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7BgkR98-anA?si=q19C3_Op1euyXZnD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://youtu.be/7BgkR98-anA?si=yPuSaBrcZuLh9-XN
 
 1. Starte proxy server:
 
